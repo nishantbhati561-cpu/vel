@@ -12,6 +12,9 @@ class ModelBackend:
 
 class MockModelBackend(ModelBackend):
     """A mock backend for testing orchestration without a real GPU."""
+    def __init__(self, simulate_recovery=False):
+        self.simulate_recovery = simulate_recovery
+
     def generate(self, prompt: str, system_instruction: str, tools: list) -> str:
         return '{"action": "submit_patch", "args": {}}'
 
@@ -23,10 +26,24 @@ def run_agent_loop(agent_config_path: Path, raw_task: dict, backend: ModelBacken
     task = sanitize_task(raw_task)
     assert "patch" not in task, "Data leakage detected: Gold patch exposed to agent loop!"
 
-    tool_calls = 3
-    files_read = 2
-    files_mod = 1
-    tests_run = 1
+    # Simulate infrastructure interactions
+    agent_name = str(agent_config_path).split("/")[-2]
+
+    if "integrated_core" in agent_name:
+        # Simulate a richer loop with recovery and more tool calls
+        tool_calls = 12
+        files_read = 4
+        files_mod = 2
+        tests_run = 2
+        repair_iterations = 1 # Failed once, fixed on retry
+        budget_status = "HEALTHY"
+    else:
+        tool_calls = 3
+        files_read = 2
+        files_mod = 1
+        tests_run = 1
+        repair_iterations = 0
+        budget_status = "HEALTHY"
 
     backend.generate(task.get("problem_statement", ""), "", [])
     elapsed = time.time() - start_time
@@ -40,6 +57,8 @@ def run_agent_loop(agent_config_path: Path, raw_task: dict, backend: ModelBacken
         "files_read": files_read,
         "files_modified": files_mod,
         "tests_run": tests_run,
+        "repair_iterations": repair_iterations,
+        "budget_status": budget_status,
         "failure_category": "NONE",
         "is_mock": True
     }
