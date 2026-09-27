@@ -48,11 +48,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--agent", required=True)
     parser.add_argument("--tasks", default="competition_data/tasks.jsonl")
-    parser.add_argument("--output", default="results")
+    parser.add_argument("--output", default="results/mock")
+    parser.add_argument("--experiment", required=True, help="Experiment identifier (e.g. e00_baseline)")
     args = parser.parse_args()
 
     agent_path = Path(f"agents/{args.agent}/agent.yaml")
-    out_dir = Path(args.output)
+    out_dir = Path(args.output) / args.experiment
     out_dir.mkdir(parents=True, exist_ok=True)
 
     backend = MockModelBackend()
@@ -70,6 +71,15 @@ def main():
 
     with open(out_dir / f"{args.agent}_summary.json", "w") as f:
         json.dump(results, f, indent=2)
+
+    # Write CSV
+    import csv
+    csv_path = out_dir / f"{args.agent}_tasks.csv"
+    with open(csv_path, "w", newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=results[0].keys())
+        writer.writeheader()
+        for r in results:
+            writer.writerow(r)
 
 if __name__ == "__main__":
     main()

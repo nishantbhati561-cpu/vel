@@ -10,3 +10,10 @@ All metrics currently stored in `results/` are from our orchestration mock. They
 - **OFFICIAL HARNESS VERIFIED:** Not yet achieved (pending Kaggle submission).
 
 *Do NOT report mock scores as true competition baseline metrics.*
+
+## Experiment Matrix
+
+| Experiment | Backend | Real model? | Real task? | Result meaning |
+|---|---|---|---|---|
+| E00 Baseline | MOCK | No | Yes (Sanitized) | Infrastructure orchestration works. Agent pipeline verified end-to-end. |
+| E01 Evidence-First | MOCK | No | Yes (Sanitized) | Infrastructure verified for E01 yaml config. |

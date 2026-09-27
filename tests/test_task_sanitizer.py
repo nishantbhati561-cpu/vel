@@ -19,5 +19,8 @@ def test_task_sanitizer_removes_gold_fields():
     assert "test_patch" not in sanitized
     assert "base_commit" not in sanitized
     assert "created_at" not in sanitized
-    assert "instance_id" in sanitized
+
+    # Assert ONLY the allowed fields made it through
+    assert set(sanitized.keys()) == {"instance_id", "repo", "problem_statement", "hints_text"}
+    assert sanitized["instance_id"] == "fastapi_1"
     assert sanitized["problem_statement"] == "Fix the bug"

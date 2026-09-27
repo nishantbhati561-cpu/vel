@@ -3,55 +3,60 @@
     "task_id": "fastapi_15661",
     "repo": "fastapi/fastapi",
     "result": "PASS",
-    "time_seconds": 2.1457672119140625e-06,
+    "time_seconds": 9.298324584960938e-06,
     "tool_calls": 3,
     "files_read": 2,
     "files_modified": 1,
     "tests_run": 1,
-    "failure_category": "NONE"
+    "failure_category": "NONE",
+    "is_mock": true
   },
   {
     "task_id": "fastapi_15588",
     "repo": "fastapi/fastapi",
     "result": "PASS",
-    "time_seconds": 1.1920928955078125e-06,
+    "time_seconds": 3.814697265625e-06,
     "tool_calls": 3,
     "files_read": 2,
     "files_modified": 1,
     "tests_run": 1,
-    "failure_category": "NONE"
+    "failure_category": "NONE",
+    "is_mock": true
   },
   {
     "task_id": "fastapi_15589",
     "repo": "fastapi/fastapi",
     "result": "PASS",
-    "time_seconds": 4.76837158203125e-07,
+    "time_seconds": 2.1457672119140625e-06,
     "tool_calls": 3,
     "files_read": 2,
     "files_modified": 1,
     "tests_run": 1,
-    "failure_category": "NONE"
+    "failure_category": "NONE",
+    "is_mock": true
   },
   {
     "task_id": "fastapi_15030",
     "repo": "fastapi/fastapi",
     "result": "PASS",
-    "time_seconds": 2.384185791015625e-07,
+    "time_seconds": 1.6689300537109375e-06,
     "tool_calls": 3,
     "files_read": 2,
     "files_modified": 1,
     "tests_run": 1,
-    "failure_category": "NONE"
+    "failure_category": "NONE",
+    "is_mock": true
   },
   {
     "task_id": "fastapi_14962",
     "repo": "fastapi/fastapi",
     "result": "PASS",
-    "time_seconds": 7.152557373046875e-07,
+    "time_seconds": 1.6689300537109375e-06,
     "tool_calls": 3,
     "files_read": 2,
     "files_modified": 1,
     "tests_run": 1,
-    "failure_category": "NONE"
+    "failure_category": "NONE",
+    "is_mock": true
   }
 ]
