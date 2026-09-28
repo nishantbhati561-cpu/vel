@@ -1,6 +1,0 @@
-task_id,repo,result,time_seconds,tool_calls,files_read,files_modified,tests_run,failure_category,is_mock
-fastapi_15661,fastapi/fastapi,PASS,8.58306884765625e-06,3,2,1,1,NONE,True
-fastapi_15588,fastapi/fastapi,PASS,3.5762786865234375e-06,3,2,1,1,NONE,True
-fastapi_15589,fastapi/fastapi,PASS,1.9073486328125e-06,3,2,1,1,NONE,True
-fastapi_15030,fastapi/fastapi,PASS,1.430511474609375e-06,3,2,1,1,NONE,True
-fastapi_14962,fastapi/fastapi,PASS,1.6689300537109375e-06,3,2,1,1,NONE,True

@@ -1,14 +1,17 @@
-# Evaluation Framework
+# Evaluation Plan
 
-## Reproducible Testing
-- Split tasks into Development / Holdout sets.
-- Do not overfit on public leaderboards.
-- Store results iteratively in `results/`.
-- Validate submissions using local CLI (`swegemma eval`) before Kaggle submission.
+## Matrix
+- **E00 Baseline**: Minimal robust baseline without advanced logic.
+- **E01 Evidence-First**: Introduces rigorous hypothesis testing.
+- **E02 Semantic Localization**: Leverages `search_similar_code`.
+- **E03 Hybrid Localization**: Semantic + Lexical search.
+- **E04 Graph Neighbors**: Uses `get_code_neighbors`.
+- **E05 Test-Aware Repair**: Analyzes `pytest` outputs.
 
-## Experiment Tracking
-All experiments must log:
-- ID, Date, Commit
-- Configuration and Strategy
-- Task Pass/Fail Rate
-- Execution Time
+## Schema
+Results must be stored reliably per task with:
+- Task Result (PASS/FAIL)
+- Elapsed Time
+- Tool Count
+- Failure Category
+- Patch Size

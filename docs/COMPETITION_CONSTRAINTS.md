@@ -1,22 +1,14 @@
 # Verified Competition Constraints
 
-## Model Constraints
-- **Required Model:** All agents MUST use `gemma-4-31b-it-qat-w4a16-ct` (W4A16 INT4 Quantized).
-- **Context Window:** Max token limit is 32,768 (vLLM max_model_len). Total max_output_tokens + thinking_budget must respect this.
+Based strictly on `HARNESS_README.md`:
 
-## Packaging Restrictions
-- **Root:** `agent.yaml` must be at the root of the ZIP file.
-- **Maximum Archive Size:** < 3 GiB (3,221,225,472 bytes) total unpacked size, including all `adapters/`.
-- **File Extensions:** Only `.yaml`, `.yml`, `.md`, `.txt`, `.py`, `.json`, and `.safetensors` are allowed.
-- **File Counts:** Max 10,000 files, Max 1,000 YAMLs, Max 1,000 skills. Max 500 agents. Max 50 sub_agent depth. Max YAML size 50 MiB.
-- **Security:** No absolute paths, null bytes, `..` traversal, or symlinks escaping submission root.
-- **LoRA:** Up to 8 LoRAs allowed. Max rank 128. `adapters/<name>/adapter_model.safetensors` format.
-
-## Runtime & Tooling Constraints
-- **Budget:** Total 12-hour task-run budget including sandbox setup.
-- **Tools:** Use standard tools (`edit_file`, `write_file`, `run_command`, `submit_patch`, etc.). Tool output truncates if token limits are hit.
-- **Patch Submission:**
-  - Explicit `submit_patch` is free.
-  - Temporary files in `/workspace` will be included in the patch. Use `/tmp` for scratch scripts.
-  - Harness modifies test files (`pytest.ini`, `conftest.py`, `test_*.py`); agent must NOT alter them as harness resets them before validation.
-- **Generation:** `temperature`, `top_p`, `top_k`, penalties, `thinking_config` are all configurable.
+1. **Submission Format**: A ZIP archive with `agent.yaml` at the root. The total unpacked size must be < 3 GiB.
+2. **Model**: All agents in a submission must declare at most ONE unique base model, which must be `gemma-4-31b-it-qat-w4a16-ct`.
+3. **Hardware Environment**: 4x NVIDIA L4 GPUs (24GB VRAM each).
+4. **Context Window**: 32,768 tokens maximum combined prompt, reasoning, and output context length.
+5. **Sandboxing**: Container A (Agent Sandbox) and Container B (Verification Sandbox) provide 4 GiB RAM / 2 vCPUs.
+6. **Built-in Tools**: 9 official tools available via `swegemma.tools`:
+   - Execution: `run_command`
+   - Workspace: `read_file`, `edit_file`, `write_file`, `get_status`, `submit_patch`
+   - Graph: `get_code_neighbors`, `search_similar_code`, `get_code_subgraph`
+7. **Time Budget**: The total task-run budget across the evaluation is 12 hours.

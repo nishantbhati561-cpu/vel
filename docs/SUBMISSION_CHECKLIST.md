@@ -1,10 +1,11 @@
-# Submission Checklist
+# Final Submission Checklist
 
-- [ ] `agent.yaml` is at the root of the archive.
-- [ ] Base model is exclusively `gemma-4-31b-it-qat-w4a16-ct`.
-- [ ] Total archive size is strictly under 3 GiB.
-- [ ] No credential leaks.
-- [ ] No path traversal (all files resolve inside the root).
-- [ ] No raw datasets or experiment logs included.
-- [ ] Temporary files during execution use `/tmp` or are cleaned up.
-- [ ] Uses valid `!include` structures (max depth 10).
+- [ ] `agent.yaml` is at the ZIP root.
+- [ ] YAML is valid and `!include` paths are correct.
+- [ ] Base model is exactly `gemma-4-31b-it-qat-w4a16-ct`.
+- [ ] No unapproved tools requested.
+- [ ] No path traversal outside `/workspace`.
+- [ ] Total uncompressed size < 3 GiB.
+- [ ] No credentials included.
+- [ ] No raw datasets included in the zip.
+- [ ] Validated with `evaluation/validate_submission.py`.
