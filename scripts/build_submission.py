@@ -10,6 +10,9 @@ def build_submission():
             print("ERROR: baseline agent not found")
             return
 
+        if os.path.exists("eval_config.yaml"):
+            zf.write("eval_config.yaml")
+
     print("Submission built at submission.zip")
 
 if __name__ == "__main__":
