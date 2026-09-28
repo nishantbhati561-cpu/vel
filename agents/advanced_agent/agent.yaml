@@ -13,4 +13,4 @@ generate_content_config:
   thinking_config:
     include_thoughts: true
     thinking_budget: 8192
-system_instruction: !include prompts/advanced_system.md
+instruction: !include prompts/advanced_system.md

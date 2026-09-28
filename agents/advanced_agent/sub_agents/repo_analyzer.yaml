@@ -11,5 +11,5 @@ generate_content_config:
   thinking_config:
     include_thoughts: true
     thinking_budget: 2048
-system_instruction: !include prompts/repo_analyzer_system.md
+instruction: !include ../prompts/repo_analyzer_system.md
 output_key: "localization_summary"

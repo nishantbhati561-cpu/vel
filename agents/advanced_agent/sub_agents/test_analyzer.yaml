@@ -9,5 +9,5 @@ generate_content_config:
   thinking_config:
     include_thoughts: true
     thinking_budget: 2048
-system_instruction: !include prompts/test_analyzer_system.md
+instruction: !include ../prompts/test_analyzer_system.md
 output_key: "test_diagnosis_summary"

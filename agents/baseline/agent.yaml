@@ -12,7 +12,7 @@ generate_content_config:
   thinking_config:
     include_thoughts: true
     thinking_budget: 4096
-system_instruction: |
+instruction: |
   You are an expert software engineer participating in a SWE benchmark.
   Your goal is to fix the issue described in the workspace.
   Use read_file to inspect files, edit_file to apply changes, run_command to test, and submit_patch when done.
